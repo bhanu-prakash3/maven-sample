@@ -10,6 +10,7 @@ pipeline {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
+                    echo "MASTER BRANCH"
                 '''
             }
         }
