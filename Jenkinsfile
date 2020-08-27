@@ -10,19 +10,23 @@ pipeline {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
-                    echo "MASTER BRANCH"
                 '''
             }
         }
-
-        stage ('Build') {
-            steps {
-                sh 'mvn install' 
+         stage('Deliver for development') {
+            when {
+                branch 'develop' 
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
+            steps {
+                echo "DEVELOP BRANCH"
+            }
+        }
+         stage('Deliver for Production') {
+            when {
+                branch 'production' 
+            }
+            steps {
+               echo  "PRODUCTION BRANCH"
             }
         }
     }
