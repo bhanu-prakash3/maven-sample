@@ -10,14 +10,23 @@ pipeline {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
-                    echo "DEVELOP BRANCH"
                 '''
             }
         }
-
-        stage ('Build') {
+         stage('Deliver for development') {
+            when {
+                branch 'develop' 
+            }
             steps {
-                sh 'mvn install' 
+                echo "DEVELOP BRANCH"
+            }
+        }
+         stage('Deliver for Production') {
+            when {
+                branch 'production' 
+            }
+            steps {
+               echo  "PRODUCTION BRANCH"
             }
         }
     }
