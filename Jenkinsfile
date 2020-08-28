@@ -18,7 +18,7 @@ pipeline {
                 branch 'develop' 
             }
             steps {
-                echo "DEVELOP BRANCH"
+                echo "DEVELOPMENT BRANCH"
             }
         }
          stage('Deliver for Production') {
